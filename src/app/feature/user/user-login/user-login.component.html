@@ -1,0 +1,19 @@
+<div class='component-content'>
+  <h2 class="component-title">{{title}}</h2>
+    <form class='text-center'>
+      <table *ngIf='user' class='table-sm' style='margin:50px auto;padding: 5px 20px;border:1px solid silver;width:400px;'>
+        <tr>
+          <td>Username:</td>
+          <td><input [(ngModel)]='user.username' name='userName' class="rounded" type='text' autofocus></td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td><input [(ngModel)]='user.password' name='password' class="rounded" type='password'></td>
+        </tr>
+        <tr>
+          <td class='text-center' colspan="2"><button type='submit' (click)="login()" class='btn btn-primary'>Login</button></td>
+        </tr>
+      </table>
+      <div class='text-danger font-weight-bold'>{{message}}</div>
+    </form>
+  </div>

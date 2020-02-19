@@ -1,0 +1,43 @@
+<app-menu></app-menu>
+<div class="component" *ngIf="product">
+    <section class="heading">
+        <span class="page-title font-weight-bold">{{title}}</span>
+        <span> | <a routerLink="/product/list">Return to list...</a></span>
+    </section>
+    <main class="single">
+        <table class="table table-sm">
+            <tr>
+                <td>Id:</td>
+                <td>{{product.id}}</td>
+            </tr>
+            <tr>
+                <td>VendorId:</td>
+                <td><input [(ngModel)]="product.vendor.id" class="rounded" type="number" disabled></td>
+            </tr>
+            <tr>
+                <td>Part Number:</td>
+                <td><input [(ngModel)]="product.partNumber" class="rounded" type="text" disabled></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input [(ngModel)]="product.name" class="rounded" type="text" disabled></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input [(ngModel)]="product.price" class="rounded" type="number" disabled></td>
+            </tr>
+            <tr>
+                <td>Unit:</td>
+                <td><input [(ngModel)]="product.unit" class="rounded" type="text" disabled></td>
+            </tr>
+            <tr>
+                <td>Photo Path:</td>
+                <td><input [(ngModel)]="product.photoPath" class="rounded" type="text" disabled></td>
+            </tr>
+        </table>
+    </main>
+    <span id="buttons">
+        <span><a routerLink="/product/edit/{{product.id}}" class="btn btn-sm btn-warning">Edit</a></span>
+        <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
+    </span>
+</div>

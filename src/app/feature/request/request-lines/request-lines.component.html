@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+<div class="component" *ngIf="request">
+    <section class="heading">
+        <span class="page-title font-weight-bold">{{title1}}</span>
+        <span> | <a routerLink="/request/list">Return to list...</a></span>
+    </section>
+    <table *ngIf='requests' class="table table-hover table-responsive-sm">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let request of requests | sort:sortColumn:ascOrder'>
+                <td>{{request.id}}</td>
+                <td>{{request.description}}</td>
+                <td>{{request.status}}</td>
+                <td>{{request.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="component" *ngIf=lineItems>
+    <span>
+        <a class="new" routerLink='/line-item/create'><img width='20' height='20' src='assets/add-icon.png'
+                title='Add New' style="float: right">
+        </a>
+    </span>
+    <h2 id="title" class="component-title">{{title2}}</h2>
+</div>
+<div>
+    <table *ngIf='lineItems' class="table table-hover table-responsive-sm">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let item of lineItems | sort:sortColumn:ascOrder'>
+                <td>{{line-item.id}}</td>
+                <td>{{line-item.quantity}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

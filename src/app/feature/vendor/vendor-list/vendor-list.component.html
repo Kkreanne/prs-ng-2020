@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<span>
+    <a class="new" routerLink='/vendor/create'><img width='20' height='20' src='assets/add-icon.png' title='Add New'
+    style="float: right">
+</a><label style="float: right">Add New</label>
+</span>
+<h2 id="title" class="component-title">{{title}}</h2>
+
+<table *ngIf='vendors' class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th><a (click)="sort('id')">Id</a></th>
+            <th><a (click)="sort('name')">Name</a></th>
+            <th><a (click)="sort('code')">Code</a></th>
+            <th>City</th>
+            <th>State</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let vendor of vendors | sort:sortColumn:ascOrder'>
+            <td>{{vendor.id}}</td>
+            <td>{{vendor.name}}</td>
+            <td>{{vendor.code}}</td>
+            <td>{{vendor.city}}</td>
+            <td>{{vendor.state}}</td>
+            <td>{{vendor.phoneNumber}}</td>
+            <td>
+                <a routerLink='/vendor/detail/{{vendor.id}}'><img src='assets/details.png' width='20' height='20'
+                        title='Detail'></a>
+                |
+                <a routerLink='/vendor/edit/{{vendor.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
+                        title='Edit'></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

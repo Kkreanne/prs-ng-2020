@@ -1,0 +1,43 @@
+<app-menu></app-menu>
+<span>
+    <a class="new" routerLink='/request/create'><img width='20' height='20' src='assets/add-icon.png' title='Add New'
+    style="float: right">
+</a><label style="float: right">Add New</label>
+</span>
+<h2 id="title" class="component-title">{{title}}</h2>
+
+<table *ngIf='requests' class="table table-hover table-responsive-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Description</th>
+            <th><a (click)="sort('deliveryMode')">Delilvery Mode</a></th>
+            <th><a (click)="sort('status')">Status</a></th>
+            <th><a (click)="sort('total')">Total</a></th>
+            <th><a (click)="sort('submittedDate')">Submitted Date</a></th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let request of requests | sort:sortColumn:ascOrder'>
+            <td>{{request.id}}</td>
+            <td>{{request.user.username}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.deliveryMode}}</td>
+            <td>{{request.status}}</td>
+            <td>{{request.total}}</td>
+            <td>{{request.submittedDate}}</td>
+            <td>
+                <a routerLink='/request/detail/{{request.id}}'><img src='assets/details.png' width='20' height='20'
+                        title='Detail'></a>
+                |
+                <a routerLink='/request/edit/{{request.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
+                        title='Edit'></a>
+                |
+                <a routerLink='/request/lines/{{request.id}}'><img src='assets/lines.png' width='20' height='20'
+                        title='Line Items'></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

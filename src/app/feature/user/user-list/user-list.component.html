@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<span>
+    <a class="new" routerLink='/user/create'><img width='20' height='20' src='assets/add-icon.png' title='Add New'
+    style="float: right">
+</a><label style="float: right">Add New</label>
+</span>
+<h2 class="component-title">{{title}}</h2>
+
+<table *ngIf='users' class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th><a (click)="sort('id')">Id</a></th>
+            <th><a (click)="sort('username')">Username</a></th>
+            <th><a (click)="sort('firstName')">First Name</a></th>
+            <th><a (click)="sort('lastName')">Last Name</a></th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Priveledge</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let user of users | sort:sortColumn:ascOrder'>
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.admin ? "Admin" : ""}} {{user.reviewer ? " | Reviewer" : ""}}</td>
+            <td>
+                <a routerLink='/user/detail/{{user.id}}'><img src='assets/details.png' width='20' height='20'
+                        title='Detail'></a>
+                |
+                <a routerLink='/user/edit/{{user.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
+                        title='Edit'></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
