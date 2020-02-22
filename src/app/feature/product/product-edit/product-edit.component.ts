@@ -26,15 +26,16 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe(parms => this.id = parms['id']);
     this.productSvc.get(this.id).subscribe(jRes => {
       this.product = jRes.data as Product;
-    })
+    });
     this.vendorSvc.list().subscribe(
       jRes => {
         this.vendors = jRes.data as Vendor[];
         console.log(this.vendors);
-      })
+      });
   }
 
   save() {
+    console.log('product edit ts save - product = ',this.product);
     this.productSvc.edit(this.product).subscribe(jRes => {
       let errs: string = jRes.errors;
       if (errs != null) {
@@ -48,4 +49,7 @@ export class ProductEditComponent implements OnInit {
     history.back();
   }
   
+  compVendor(a: Vendor, b: Vendor): boolean {
+    return a && b && a.name === b.name;
+  }
 }

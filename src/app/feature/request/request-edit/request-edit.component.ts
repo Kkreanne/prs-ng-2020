@@ -5,7 +5,7 @@ import { RequestService } from 'src/app/service/request.service';
 
 @Component({
   selector: 'app-request-edit',
-  templateUrl: '..//request-maint-shared/request-maint.component.html',
+  templateUrl: './request-edit.component.html',
   styleUrls: ['./request-edit.component.css']
 })
 export class RequestEditComponent implements OnInit {
