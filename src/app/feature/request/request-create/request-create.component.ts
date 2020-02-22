@@ -4,10 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Request } from 'src/app/model/request.class';
 import { SystemService } from 'src/app/service/system.service';
 import { BaseComponent } from 'src/app/base/base/base.component';
+import { User } from 'src/app/model/user.class';
 
 @Component({
   selector: 'app-request-create',
-  templateUrl: '..//request-maint-shared/request-maint.component.html',
+  templateUrl: './request-create.component.html',
   styleUrls: ['./request-create.component.css']
 })
 export class RequestCreateComponent extends BaseComponent implements OnInit {
@@ -23,8 +24,8 @@ export class RequestCreateComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    super.ngOnInit;
-    this.loggedIn = this.sysSvc.loggedIn;
+    super.ngOnInit();
+    this.request.user = this.loggedIn;
   }
 
   save() {

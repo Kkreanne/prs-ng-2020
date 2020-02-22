@@ -1,0 +1,13 @@
+table {
+    max-width: 90%;
+    margin: 3%;
+}
+section {
+    padding: 1%;
+}
+.heading2 {
+    padding-right: 10%;
+}
+#requestTable {
+    max-width: 60%;
+}

@@ -24,15 +24,13 @@ export class UserLoginComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.user.username = 'kabrams';
     this.user.password = 'kreanne7';
-    this.sysSvc.loggedIn = null;
   }
 
   login() {
     this.userSvc.login(this.user).subscribe(jRes => {
       if (jRes.errors == null) {
         this.user = jRes.data as User;
-        this.sysSvc.data.user.instance = this.user;
-        this.sysSvc.data.user.loggedIn = true;
+        this.sysSvc.loggedIn = this.user;
         this.router.navigateByUrl('/user/list');
       } else {
         this.message = jRes.errors;

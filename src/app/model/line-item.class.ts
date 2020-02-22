@@ -1,14 +1,16 @@
+import { Product } from './product.class';
+
 export class LineItem {
     id: number;
     quantity: number;
-    productId: number;
-    requestId: number;
+    product: Product;
+    request: Request;
 
     constructor(id: number = 0, quantity: number = 0,
-                productId: number = 0, requestId: number = 0) {
+                product: Product = null, request: Request = null) {
         this.id = id;
         this.quantity = quantity;
-        this.productId = productId;
-        this.requestId = requestId;
+        this.product = product;
+        this.request = request;
     }
 }

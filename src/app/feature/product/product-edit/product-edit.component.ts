@@ -35,7 +35,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   save() {
-    console.log('product edit ts save - product = ',this.product);
     this.productSvc.edit(this.product).subscribe(jRes => {
       let errs: string = jRes.errors;
       if (errs != null) {

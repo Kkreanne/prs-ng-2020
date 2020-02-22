@@ -3,18 +3,21 @@ import { MenuItem } from 'src/app/model/menu-item.class';
 import { User } from 'src/app/model/user.class';
 import { SystemService } from 'src/app/service/system.service';
 import { Router } from '@angular/router';
+import { BaseComponent } from 'src/app/base/base/base.component';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent extends BaseComponent implements OnInit {
   user: User;
   menuItems: MenuItem[] = [];
   
-  constructor(private sysSvc: SystemService, 
-              private router: Router) { }
+  constructor(protected sysSvc: SystemService, 
+              private router: Router) {
+    super(sysSvc);
+  }
 
   ngOnInit() {
     this.menuItems = [
@@ -27,8 +30,8 @@ export class MenuComponent implements OnInit {
       /*new MenuItem("Login", "user/login", "Login")*/
     ];
 
-    if (this.sysSvc.data.user.loggedIn) {
-      this.user = this.sysSvc.data.user.instance;
+    if (this.sysSvc.loggedIn) {
+      this.user = this.sysSvc.loggedIn;
     }
   }
 

@@ -15,23 +15,31 @@ import { SystemService } from 'src/app/service/system.service';
 export class RequestLinesComponent extends BaseComponent implements OnInit {
   title1: string = 'Line Items per Request';
   title2: string = 'Add New Line Items';
-  requests: Request[];
+  request: Request[];
   lineItems: LineItem[];
   id: number = 0;
 
   constructor(private requestSvc: RequestService,
               private lineItemSvc: LineItemService,
-              protected sysSvc: SystemService) {
+              protected sysSvc: SystemService,
+              private router: Router,
+              private route: ActivatedRoute) {
     super(sysSvc);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.requestSvc.list().subscribe(
+    this.route.params.subscribe(parms => this.id = parms['id']);
+    this.requestSvc.get(this.id).subscribe(
       jRes => {
-        this.requests = jRes.data as Request[];
-        console.log(this.requests);
+        this.request = jRes.data as Request[];
+        console.log(this.request);
       });
+      this.lineItemSvc.list().subscribe(
+        jRes => {
+          this.lineItems = jRes.data as LineItem[];
+          console.log(this.lineItems);
+        });
   }
 
 }

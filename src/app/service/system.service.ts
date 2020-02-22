@@ -7,22 +7,15 @@ import { Router } from '@angular/router';
 })
 export class SystemService {
   loggedIn: User = null;
-  data = {
-    about: 'System Service',
-    user: {
-      loggedIn: false,
-      instance: null
-    }
-  };
 
   constructor(private router: Router) { }
 
   isAdmin(): boolean {
-    return (this.loggedIn == null) ? false : this.loggedIn.Admin;
+    return (this.loggedIn == null) ? false : this.loggedIn.admin;
   }
 
   isReviewer(): boolean {
-    return (this.loggedIn == null) ? false : this.loggedIn.Reviewer;
+    return (this.loggedIn == null) ? false : this.loggedIn.reviewer;
   }
 
   checkLogin(): void {

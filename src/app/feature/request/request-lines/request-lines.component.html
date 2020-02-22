@@ -4,46 +4,61 @@
         <span class="page-title font-weight-bold">{{title1}}</span>
         <span> | <a routerLink="/request/list">Return to list...</a></span>
     </section>
-    <table *ngIf='requests' class="table table-hover table-responsive-sm">
-        <thead class="thead-light">
-            <tr>
-                <th>ID</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor='let request of requests | sort:sortColumn:ascOrder'>
-                <td>{{request.id}}</td>
-                <td>{{request.description}}</td>
-                <td>{{request.status}}</td>
-                <td>{{request.total}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="component" *ngIf=lineItems>
-    <span>
-        <a class="new" routerLink='/line-item/create'><img width='20' height='20' src='assets/add-icon.png'
-                title='Add New' style="float: right">
-        </a>
-    </span>
-    <h2 id="title" class="component-title">{{title2}}</h2>
-</div>
-<div>
-    <table *ngIf='lineItems' class="table table-hover table-responsive-sm">
-        <thead class="thead-light">
-            <tr>
-                <th>ID</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor='let item of lineItems | sort:sortColumn:ascOrder'>
-                <td>{{line-item.id}}</td>
-                <td>{{line-item.quantity}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <main class="single">
+        <table id="requestTable" class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th>Request Id</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{request.id}}</td>
+                    <td>{{request.description}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="component" *ngIf='lineItems'>
+            <section class="heading2" style="float: right">
+                <span class="page-title font-weight-bold">{{title2}}</span> | 
+                <a class="new" routerLink='/line-item/create'><img width='20' height='20' src='assets/add-icon.png'
+                        title='Add New'>
+                </a>
+            </section>
+        </div>
+        <div>
+            <table *ngIf='lineItems' class="table table-hover table-responsive-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Line Item Id</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Line Item Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let lineItem of lineItems | sort:sortColumn:ascOrder'>
+                        <td>{{lineItem.id}}</td>
+                        <td>{{lineItem.product.name}}</td>
+                        <td>{{lineItem.quantity}}</td>
+                        <td>{{lineItem.product.price}}</td>
+                        <td>$</td>
+                        <td>                
+                            <a routerLink='/line-item/edit/{{lineItem.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
+                            title='Edit'></a> |
+                            <a routerLink='/line-item/delete/{{lineItem.id}}'><img src='assets/delete.jpg' width='20' height='20'
+                            title='Delete'></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </div>
