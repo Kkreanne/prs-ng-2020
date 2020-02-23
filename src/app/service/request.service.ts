@@ -10,7 +10,8 @@ const url = 'http://localhost:8080/requests/';
   providedIn: 'root'
 })
 export class RequestService {
-
+  requestId: Request = null;
+  
   constructor(private http: HttpClient) { }
 
   list(): Observable<JsonResponse> {

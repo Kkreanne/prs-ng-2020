@@ -1,14 +1,28 @@
 <app-menu></app-menu>
-<div class="component" *ngIf="lineItem">
+<div class="title">
     <section class="heading">
-        <span class="page-title font-weight-bold">{{title}}</span>
+        <span class="component-title font-weight-bold">{{title}}</span>
         <span> | <a routerLink="/request/lines">Return to list...</a></span>
     </section>
+</div>
+<div *ngIf='lineItem'>
     <main class="single">
         <table class="table table-sm">
             <tr>
+                <td>Request Id:</td>
+                <td>
+                    <select [(ngModel)]="lineItem.request" class="rounded" [compareWith]="compRequest">
+                        <option *ngFor='let request of requests' [ngValue]='request'>{{request.id}}</option>
+                    </select> 
+                </td>
+            </tr>
+            <tr>
                 <td>Product:</td>
-                <td><input [(ngModel)]="lineItem.product.name" class="rounded" type="text"></td>
+                <td>
+                    <select [(ngModel)]="lineItem.product" class="rounded" [compareWith]="compProduct">
+                    <option *ngFor='let product of products' [ngValue]='product'>{{product.name}}</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Quantity:</td>

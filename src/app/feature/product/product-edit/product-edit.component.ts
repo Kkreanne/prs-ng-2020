@@ -7,7 +7,7 @@ import { VendorService } from 'src/app/service/vendor.service';
 
 @Component({
   selector: 'app-product-edit',
-  templateUrl: '..//product-maint-shared/product-maint.component.html',
+  templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
@@ -18,9 +18,9 @@ export class ProductEditComponent implements OnInit {
   id: number = 0;
 
   constructor(private productSvc: ProductService,
-    private vendorSvc: VendorService,
-    private router: Router,
-    private route: ActivatedRoute) { }
+              private vendorSvc: VendorService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(parms => this.id = parms['id']);

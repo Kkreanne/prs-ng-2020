@@ -3,19 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JsonResponse } from '../model/json-response.class';
 import { LineItem } from '../model/line-item.class';
-import { RequestService } from './request.service';
 
-const url = 'http://localhost:8080/line-items';
+const url = 'http://localhost:8080/line-items/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LineItemService {
-
-  constructor(
-    private http: HttpClient,
-    private requestSvc: RequestService
-  ) { }
+  
+  constructor(private http: HttpClient) { }
 
   list(): Observable<JsonResponse> {
     return this.http.get(url) as Observable<JsonResponse>;

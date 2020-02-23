@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Request } from 'src/app/model/request.class';
 import { SystemService } from 'src/app/service/system.service';
 import { BaseComponent } from 'src/app/base/base/base.component';
-import { User } from 'src/app/model/user.class';
 
 @Component({
   selector: 'app-request-create',

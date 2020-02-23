@@ -4,6 +4,7 @@ import { LineItemService } from 'src/app/service/line-item.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/model/product.class';
 import { ProductService } from 'src/app/service/product.service';
+import { RequestService } from 'src/app/service/request.service';
 
 @Component({
   selector: 'app-line-item-edit',
@@ -15,10 +16,12 @@ export class LineItemEditComponent implements OnInit {
   submitBtnTitle: string = 'Save';
   lineItem: LineItem = new LineItem();
   products: Product[] = [];
+  request: Request;
   id: number = 0;
 
   constructor(private lineItemSvc: LineItemService, 
               private productSvc: ProductService,
+              private requestSvc: RequestService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -31,6 +34,12 @@ export class LineItemEditComponent implements OnInit {
       jRes => {
         this.products = jRes.data as Product[];
         console.log(this.products);
+      });
+    this.route.params.subscribe(parms => this.id = parms['id']);
+    this.requestSvc.get(this.id).subscribe(
+      jRes => {
+        this.request = jRes.data as Request;
+        console.log(this.request);
       });
   }
 
