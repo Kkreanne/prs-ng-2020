@@ -5,6 +5,12 @@ nav {
 	margin-bottom: 10px;
 }
 
+h4 {
+	float: right;
+	color: white;
+	padding-right: 5px;
+}
+
 ul {
 	padding: 0;
 	margin: 0;

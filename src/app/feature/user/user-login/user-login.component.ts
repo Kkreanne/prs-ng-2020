@@ -31,7 +31,7 @@ export class UserLoginComponent extends BaseComponent implements OnInit {
       if (jRes.errors == null) {
         this.user = jRes.data as User;
         this.sysSvc.loggedIn = this.user;
-        this.router.navigateByUrl('/user/list');
+        this.router.navigateByUrl('home');
       } else {
         this.message = jRes.errors;
       }

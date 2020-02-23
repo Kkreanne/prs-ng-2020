@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Request } from 'src/app/model/request.class';
 import { SystemService } from 'src/app/service/system.service';
 import { BaseComponent } from 'src/app/base/base/base.component';
+import { User } from 'src/app/model/user.class';
 
 @Component({
   selector: 'app-request-create',
@@ -14,6 +15,7 @@ export class RequestCreateComponent extends BaseComponent implements OnInit {
   title: string = 'Create New Request';
   submitBtnTitle: string = 'Create';
   request: Request = new Request();
+  user: User;
 
   constructor(private requestSvc: RequestService,
               protected sysSvc: SystemService,
@@ -25,6 +27,7 @@ export class RequestCreateComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.request.user = this.loggedIn;
+    
   }
 
   save() {
@@ -40,5 +43,4 @@ export class RequestCreateComponent extends BaseComponent implements OnInit {
   backClicked() {
     history.back();
   }
-
 }

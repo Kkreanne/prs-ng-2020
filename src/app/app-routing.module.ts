@@ -22,10 +22,12 @@ import { RequestApproveComponent } from './feature/request/request-approve/reque
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 import { LineItemCreateComponent } from './feature/line-item/line-item-create/line-item-create.component';
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
+import { HomeComponent } from './feature/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: UserLoginComponent},
+  { path: '', redirectTo: 'user/login', pathMatch: 'full' },
+  { path: 'user/login', component: UserLoginComponent},
+  { path: 'home', component: HomeComponent},
   { path: 'user/list', component: UserListComponent },
   { path: 'user/edit/:id', component: UserEditComponent },
   { path: 'user/detail/:id', component: UserDetailComponent },

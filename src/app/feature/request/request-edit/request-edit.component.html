@@ -2,12 +2,20 @@
 <div class="title">
     <section class="heading">
         <span class="component-title font-weight-bold">{{title}}</span>
-        <p *ngIf='!request'>Loading..</p>
+        <!-- <p *ngIf='!request'>Loading..</p> -->
     </section>
 </div>
 <div *ngIf='request'>
     <main class="single">
         <table class="table table-sm">
+            <tr>
+                <td>
+                    Request Id:
+                </td>
+                <td>
+                    {{request.id}}
+                </td>
+            </tr>
             <tr>
                 <td>
                     Description:
