@@ -10,11 +10,7 @@
         <table class="table table-sm">
             <tr>
                 <td>Request Id:</td>
-                <td>
-                    <select [(ngModel)]="lineItem.request" class="rounded" [compareWith]="compRequest">
-                        <option *ngFor='let request of requests' [ngValue]='request'>{{request.id}}</option>
-                    </select> 
-                </td>
+                <td>{{request.id}}</td>
             </tr>
             <tr>
                 <td>Product:</td>

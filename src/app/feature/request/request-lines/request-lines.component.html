@@ -25,10 +25,10 @@
         </table>
         <div class="component" *ngIf='lineItems'>
             <section class="heading2" style="float: right">
-                <span class="page-title font-weight-bold">{{title2}}</span> | 
-                <span> <a routerLink='/line/item/create'><img width='20' height='20' src='assets/add-icon.png'
-                        title='Add New'></a></span>
-                <p *ngIf='!lineItems'>No current items. Please add line items to this request.</p>
+                <span class="page-title font-weight-bold">{{title2}}</span> |
+                <span> <a routerLink='/line/item/create/{{request.id}}'><img width='20' height='20'
+                            src='assets/add-icon.png' title='Add New'></a></span>
+                <!-- <p *ngIf='!lineItems'>No current items. Please add line items to this request.</p> -->
             </section>
             <main class="single">
                 <table *ngIf='lineItems' class="table table-hover table-responsive-sm">
@@ -49,16 +49,19 @@
                             <td>{{lineItem.quantity}}</td>
                             <td>{{lineItem.product.price}}</td>
                             <td>$</td>
-                            <td>                
-                                <a routerLink='/line/item/edit/{{lineItem.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
-                                    title='Edit'></a> |
-                                    <a routerLink='/line/item/delete/{{lineItem.id}}'><img src='assets/delete.jpg' width='20' height='20'
-                                        title='Delete'></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </main>
+                            <td>
+                                <a routerLink='/line/item/edit/{{lineItem.id}}'><img src='assets/pencil-icon.png'
+                                        width='20' height='20' title='Edit'></a> |
+                                <a routerLink='/line/item/delete/{{lineItem.id}}'><img src='assets/delete.jpg'
+                                        width='20' height='20' title='Delete'></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span id="buttons">
+                    <span><button (click)="submit()" class="btn btn-sm btn-primary">{{submitTitle}}</button></span>
+                </span>
+            </main>
         </div>
     </main>
 </div>

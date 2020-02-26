@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JsonResponse } from '../model/json-response.class';
 import { LineItem } from '../model/line-item.class';
+import { Request } from '../model/request.class';
 
-const url = 'http://localhost:8080/line-items/';
+const url = 'http://localhost:8080/line/items/';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class LineItemService {
 
   delete(id: number): Observable<JsonResponse> {
     return this.http.delete(url+id) as Observable<JsonResponse>;
+  }
+
+  getByRequest(id: number): Observable<JsonResponse> {
+    return this.http.get(`${url}request/${id}`) as Observable<JsonResponse>;
   }
 }

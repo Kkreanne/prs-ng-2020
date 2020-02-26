@@ -8,7 +8,7 @@
 			<a *ngIf='user && user.isReviewer' routerLink='/request/review'>Review</a>
 		</li>
 		<li>
-			<a *ngIf='!user' routerLink='/home'>Login</a>
+			<a *ngIf='!user' routerLink='/user/login'>Login</a>
 		</li>
 		<h4>Hello, {{user.firstName}}</h4>
 	</ul>

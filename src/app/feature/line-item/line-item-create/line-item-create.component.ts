@@ -16,7 +16,7 @@ export class LineItemCreateComponent implements OnInit {
   title: string = 'Create New Line Item';
   submitBtnTitle: string = 'Create';
   lineItem: LineItem = new LineItem();
-  requests: Request[] = [];
+  request: Request = new Request();
   products: Product[] = [];
   id: number = 0;
 
@@ -28,10 +28,10 @@ export class LineItemCreateComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(parms => this.id = parms['id']);
-    this.requestSvc.list().subscribe(
+    this.requestSvc.get(this.id).subscribe(
       jRes => {
-        this.requests = jRes.data as Request[];
-        console.log(this.requests);
+        this.request = jRes.data as Request;
+        console.log(this.request);
       });
     this.productSvc.list().subscribe(
       jRes => {
@@ -41,17 +41,14 @@ export class LineItemCreateComponent implements OnInit {
   }
 
   save() {
+    this.lineItem.request = this.request;
     this.lineItemSvc.create(this.lineItem).subscribe(jRes => {
       let errs: string = jRes.errors;
       if (errs!=null) {
         console.log("Error creating line-item: "+errs);
       }
-      this.router.navigateByUrl('/request/lines');
+      this.router.navigateByUrl('request/lines/'+this.id);
     });
-  }
-
-  compRequest(a: Request, b: Request): boolean {
-    return a && b && a.id === b.id;
   }
   
   compProduct(a: Product, b: Product): boolean {
