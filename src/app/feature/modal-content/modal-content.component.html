@@ -1,11 +1,10 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Simple modal</h4>
+    <h4 class="modal-title" id="modal-basic-title">Reason For Rejection</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <input [(ngModel)]="user.name" type="text">
-    <input [(ngModel)]="user.age" type="number">
-    <button (click)="passBack()" type="submit" class="btn btn-primary w-100">Pass back</button>
+    <input [(ngModel)]="request.reasonForRejection" type="text">
+    <button (click)="passBack()" type="submit" class="btn btn-primary">Okay</button>
   </div>

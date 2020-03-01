@@ -26,8 +26,8 @@
             <td>{{request.description}}</td>
             <td>{{request.deliveryMode}}</td>
             <td>{{request.status}}</td>
-            <td>{{request.total}}</td>
-            <td>{{request.submittedDate}}</td>
+            <td>{{request.total | currency}}</td>
+            <td>{{request.submittedDate | date: 'medium'}}</td>
             <td>
                 <a routerLink='/request/detail/{{request.id}}'><img src='assets/details.png' width='20' height='20'
                         title='Detail'></a>

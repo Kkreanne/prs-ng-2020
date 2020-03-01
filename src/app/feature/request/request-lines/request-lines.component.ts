@@ -52,4 +52,15 @@ export class RequestLinesComponent extends BaseComponent implements OnInit {
       this.router.navigateByUrl('/request/list');
     });
   }
+
+  delete() {
+    this.route.params.subscribe(parms => this.id = parms['id']);
+    this.lineItemSvc.delete(this.id).subscribe(jRes => {
+      console.log("Line Item deleted:", jRes);
+      if (jRes.errors != null) {
+        console.log("Error deleting Line Item: "+jRes.errors);
+      }
+      this.router.navigateByUrl("request/lines/:id");
+    });
+  }
 }
