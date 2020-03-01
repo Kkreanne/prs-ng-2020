@@ -23,6 +23,7 @@ import { RequestLinesComponent } from './feature/request/request-lines/request-l
 import { LineItemCreateComponent } from './feature/line-item/line-item-create/line-item-create.component';
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
 import { HomeComponent } from './feature/home/home.component';
+import { ModalComponent } from './feature/modal/modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'user/login', pathMatch: 'full' },
@@ -45,8 +46,9 @@ const routes: Routes = [
   { path: 'request/detail/:id', component: RequestDetailComponent },
   { path: 'request/create', component: RequestCreateComponent },
   { path: 'request/lines/:id', component: RequestLinesComponent },
-  { path: 'request/review', component: RequestReviewComponent },
-  { path: 'request/approve', component: RequestApproveComponent },
+  { path: 'request/review/list', component: RequestReviewComponent },
+  { path: 'request/approve/:id', component: RequestApproveComponent },
+  { path: 'request/approve/:id/dialog', component: ModalComponent },
   { path: 'line/item/create/:id', component: LineItemCreateComponent },
   { path: 'item/edit/:id', component: LineItemEditComponent },
   { path: '**', component: UserLoginComponent}

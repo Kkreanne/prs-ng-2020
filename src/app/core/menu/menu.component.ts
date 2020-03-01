@@ -26,7 +26,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
       new MenuItem("Vendor", "/vendor/list", "Vendor List"),
       new MenuItem("Product", "/product/list", "Product List"),
       new MenuItem("Request", "/request/list", "Request List"),
-      new MenuItem("Review", "/review/list", "List in Review Status"),
+      new MenuItem("Review", "/request/review/list", "List in Review Status"),
       /*new MenuItem("Login", "user/login", "Login")*/
     ];
 

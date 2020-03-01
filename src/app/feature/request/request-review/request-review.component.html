@@ -1,1 +1,31 @@
-<p>request-review works!</p>
+<app-menu></app-menu>
+<h2 id="title" class="component-title">{{title}}</h2>
+<div class="component" *ngIf='requests'>
+    <main class="single">
+        <table *ngIf='requests' class="table table-hover table-responsive-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let request of requests'>
+                    <td>{{request.id}}</td>
+                    <td>{{request.user.username}}</td>
+                    <td>{{request.description}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.total}}</td>
+                    <td>
+                        <a routerLink='/request/approve/{{request.id}}'><img src='assets/review.png' width='20'
+                                height='20' title='Approve'></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</div>

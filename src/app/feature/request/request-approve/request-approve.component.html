@@ -1,1 +1,59 @@
-<p>request-approve works!</p>
+<app-menu></app-menu>
+<div class="component" *ngIf="request">
+    <section class="heading">
+        <span class="page-title font-weight-bold">{{title1}}</span>
+        <span> | <a routerLink="/request/review/list">Return to list...</a></span>
+    </section>
+    <main class="single">
+        <table id="requestTable" class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th>Request Id</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{request.id}}</td>
+                    <td>{{request.description}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="component" *ngIf='lineItems'>
+            <section class="heading2">
+                <span class="page-title font-weight-bold">{{title2}}</span>
+                <!-- <p *ngIf='!lineItems'>No current items. Please add line items to this request.</p> -->
+            </section>
+            <main class="single">
+                <table *ngIf='lineItems' class="table table-hover table-responsive-sm">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Line Item Id</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Line Item Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let lineItem of lineItems | sort:sortColumn:ascOrder'>
+                            <td>{{lineItem.id}}</td>
+                            <td>{{lineItem.product.name}}</td>
+                            <td>{{lineItem.quantity}}</td>
+                            <td>{{lineItem.product.price}}</td>
+                            <td>{{lineItem.quantity * lineItem.product.price | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span id="buttons">
+                    <span><button (click)="approve()" class="btn btn-sm btn-primary">{{approveBtn}}</button></span>
+                    | <button (click)="onReject()" class="btn btn-sm btn-danger">{{rejectBtn}}</button>
+                </span>
+            </main>
+        </div>
+    </main>
+</div>

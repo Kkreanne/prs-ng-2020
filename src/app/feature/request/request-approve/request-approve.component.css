@@ -1,0 +1,22 @@
+table {
+    max-width: 90%;
+    margin: 3%;
+}
+section {
+    padding: 1%;
+}
+.heading2 {
+    padding-left: 3%;
+}
+#requestTable {
+    max-width: 60%;
+}
+#buttons {
+    margin: 4%;
+}
+.hide{
+    display:none;
+}
+.show{
+    display:block;
+}

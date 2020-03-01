@@ -37,4 +37,17 @@ export class RequestService {
   review(request: Request): Observable<JsonResponse> {
     return this.http.put(`${url}submit-review`, request) as Observable<JsonResponse>;
   }
+
+  requestWithStatusOfReview(id: number): Observable<JsonResponse> {
+    console.log("a");
+    return this.http.get(url+"/list-review/"+id) as Observable<JsonResponse>;
+  }
+
+  approve(request: Request): Observable<JsonResponse> {
+    return this.http.put(`${url}approve`, request) as Observable<JsonResponse>;
+  }
+
+  reject(request: Request): Observable<JsonResponse> {
+    return this.http.put(`${url}reject`, request) as Observable<JsonResponse>;
+  }
 }

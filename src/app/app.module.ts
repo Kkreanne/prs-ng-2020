@@ -31,6 +31,8 @@ import { RequestApproveComponent } from './feature/request/request-approve/reque
 import { LineItemCreateComponent } from './feature/line-item/line-item-create/line-item-create.component';
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
 import { HomeComponent } from './feature/home/home.component';
+import { ModalContentComponent } from './feature/modal-content/modal-content.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -61,14 +63,17 @@ import { HomeComponent } from './feature/home/home.component';
     LineItemCreateComponent,
     LineItemEditComponent,
     HomeComponent,
+    ModalContentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, RequestApproveComponent],
+  entryComponents: [ModalContentComponent]  
 })
 export class AppModule { }

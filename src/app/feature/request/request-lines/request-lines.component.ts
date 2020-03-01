@@ -44,7 +44,6 @@ export class RequestLinesComponent extends BaseComponent implements OnInit {
   }
 
   submit() {
-    console.log("lines.submit() called...");
     this.requestSvc.review(this.request).subscribe(jRes => {
       let errs: string = jRes.errors;
       if (errs != null) {

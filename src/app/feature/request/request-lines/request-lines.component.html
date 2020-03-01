@@ -48,7 +48,7 @@
                             <td>{{lineItem.product.name}}</td>
                             <td>{{lineItem.quantity}}</td>
                             <td>{{lineItem.product.price}}</td>
-                            <td>$</td>
+                            <td>{{lineItem.quantity * lineItem.product.price | currency}}</td>
                             <td>
                                 <a routerLink='/line/item/edit/{{lineItem.id}}'><img src='assets/pencil-icon.png'
                                         width='20' height='20' title='Edit'></a> |
