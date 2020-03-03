@@ -17,7 +17,7 @@ export class LineItemEditComponent implements OnInit {
   lineItem: LineItem = new LineItem();
   products: Product[] = [];
   request: Request;
-  id: number = 0;
+  id: number;
 
   constructor(private lineItemSvc: LineItemService, 
               private productSvc: ProductService,
@@ -35,12 +35,7 @@ export class LineItemEditComponent implements OnInit {
         this.products = jRes.data as Product[];
         console.log(this.products);
       });
-    this.route.params.subscribe(parms => this.id = parms['id']);
-    this.requestSvc.get(this.id).subscribe(
-      jRes => {
-        this.request = jRes.data as Request;
-        console.log(this.request);
-      });
+    
   }
 
   save() {
@@ -49,7 +44,17 @@ export class LineItemEditComponent implements OnInit {
       if (errs!=null) {
         console.log("Error editing line-item: "+errs);
       }
-      this.router.navigateByUrl('/request/lines');
+      this.router.navigateByUrl('/request/lines/'+this.lineItem.request.id);
+    });
+  }
+
+  delete() {
+    this.lineItemSvc.delete(this.id).subscribe(jRes => {
+      let errs: string = jRes.errors;
+      if (errs!=null) {
+        console.log("Error deleting line-item: "+errs);
+      }
+      this.router.navigateByUrl('/request/lines/'+this.lineItem.request.id);
     });
   }
   

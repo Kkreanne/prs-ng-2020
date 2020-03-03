@@ -33,7 +33,6 @@ import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-i
 import { HomeComponent } from './feature/home/home.component';
 import { ModalContentComponent } from './feature/modal-content/modal-content.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LineItemDeleteComponent } from './feature/line-item/line-item-delete/line-item-delete.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +64,6 @@ import { LineItemDeleteComponent } from './feature/line-item/line-item-delete/li
     LineItemEditComponent,
     HomeComponent,
     ModalContentComponent,
-    LineItemDeleteComponent
   ],
   imports: [
     BrowserModule,

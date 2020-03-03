@@ -19,6 +19,7 @@ export class RequestLinesComponent extends BaseComponent implements OnInit {
   request: Request;
   lineItems: LineItem[];
   id: number = 0;
+  lineId: number;
 
   constructor(private requestSvc: RequestService,
     private lineItemSvc: LineItemService,
@@ -53,14 +54,16 @@ export class RequestLinesComponent extends BaseComponent implements OnInit {
     });
   }
 
-  delete() {
-    this.route.params.subscribe(parms => this.id = parms['id']);
-    this.lineItemSvc.delete(this.id).subscribe(jRes => {
-      console.log("Line Item deleted:", jRes);
-      if (jRes.errors != null) {
-        console.log("Error deleting Line Item: "+jRes.errors);
+  delete(lineId: number) {
+    this.lineId = lineId;
+    this.lineItemSvc.delete(this.lineId).subscribe(jRes => {
+      let errs: string = jRes.errors;
+      if (errs!=null) {
+        console.log("Error deleting line-item: "+errs);
       }
-      this.router.navigateByUrl("request/lines/:id");
+      console.log(this.lineId);
+      this.ngOnInit();
     });
   }
+
 }

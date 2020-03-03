@@ -52,8 +52,8 @@
                             <td>
                                 <a routerLink='/line/item/edit/{{lineItem.id}}'><img src='assets/pencil-icon.png'
                                         width='20' height='20' title='Edit'></a> |
-                                <a routerLink='/line/item/delete/{{lineItem.id}}'><img src='assets/delete.jpg'
-                                        width='20' height='20' title='Delete'></a>                            
+                                <button (click)="delete(lineItem.id)"><img src='assets/delete.jpg'
+                                    width='20' height='20' title='Delete'></button>                            
                             </td>
                         </tr>
                     </tbody>
