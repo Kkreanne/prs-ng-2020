@@ -58,21 +58,9 @@ export class RequestApproveComponent extends BaseComponent implements OnInit {
       });
   }
 
-  reject() {
-    this.requestSvc.reject(this.request).subscribe(
-      jRes => {
-        let errs: string = jRes.errors;
-        if (errs != null) {
-          console.log("Error rejecting request: " + errs);
-        }
-        this.router.navigateByUrl('/request/list');
-      });
-  }
-
   onReject() {
     const modal = this.modalSvc.open(ModalContentComponent);
     modal.componentInstance.request = this.request;
-    this.reject();
     modal.result.then((result) => {
       if (result) {
         console.log(result);

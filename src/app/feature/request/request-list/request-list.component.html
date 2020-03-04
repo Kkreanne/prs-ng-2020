@@ -9,10 +9,9 @@
 <table *ngIf='requests' class="table table-hover table-responsive-sm">
     <thead class="thead-light">
         <tr>
-            <th>ID</th>
             <th>Username</th>
             <th>Description</th>
-            <th><a (click)="sort('deliveryMode')">Delilvery Mode</a></th>
+            <th><a (click)="sort('deliveryMode')">Delivery Mode</a></th>
             <th><a (click)="sort('status')">Status</a></th>
             <th><a (click)="sort('total')">Total</a></th>
             <th><a (click)="sort('submittedDate')">Submitted Date</a></th>
@@ -21,7 +20,6 @@
     </thead>
     <tbody>
         <tr *ngFor='let request of requests | sort:sortColumn:ascOrder'>
-            <td>{{request.id}}</td>
             <td>{{request.user.username}}</td>
             <td>{{request.description}}</td>
             <td>{{request.deliveryMode}}</td>

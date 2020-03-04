@@ -23,7 +23,8 @@ export class ModalContentComponent implements OnInit {
   passBack() {
     this.passEntry.emit(this.request);
     this.activeModal.close(this.request);
-    this.save();
+    // this.save();
+    this.reject();
   }
 
   save() {
@@ -34,6 +35,17 @@ export class ModalContentComponent implements OnInit {
       }
       this.router.navigateByUrl('/request/list');
     });
+  }
+  
+  reject() {
+    this.requestSvc.reject(this.request).subscribe(
+      jRes => {
+        let errs: string = jRes.errors;
+        if (errs != null) {
+          console.log("Error rejecting request: " + errs);
+        }
+        this.router.navigateByUrl('/request/list');
+      });
   }
 
 }
